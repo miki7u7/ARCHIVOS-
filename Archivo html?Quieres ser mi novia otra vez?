@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones</title>
+    <style>
+    .boton-si {
+        width: 120px;
+        height: 120px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        margin: 10px;
+        outline: none;
+        background-color: yellow;
+        transition: transform 0.3s ease;
+    }
+    .boton-no {
+        width: 120px;
+        height: 120px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        margin: 10px;
+        outline: none;
+        background-color: yellow;
+        transition: transform 0.3s ease;
+        position: absolute;
+    }
+    .boton-si:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+
+<button class="boton-si" onclick="respuestaSi()">Sí</button>
+<button id="boton-no" class="boton-no" onclick="respuestaNo()">No</button>
+
+<script>
+    function respuestaSi() {
+        alert("¡Sabía que dirías ¡Sí, mi amor!");
+    }
+
+    function respuestaNo() {
+        // No hace nada
+    }
+
+    function moveBotonNo() {
+        const botonNo = document.getElementById('boton-no');
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        const randomX = Math.floor(Math.random() * screenWidth);
+        const randomY = Math.floor(Math.random() * screenHeight);
+        botonNo.style.left = randomX + 'px';
+        botonNo.style.top = randomY + 'px';
+    }
+
+    moveBotonNo();
+
+    document.addEventListener('mousemove', function(event) {
+        const botonNo = document.getElementById('boton-no');
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        const botonNoRect = botonNo.getBoundingClientRect();
+
+        if (
+            mouseX >= botonNoRect.left &&
+            mouseX <= botonNoRect.right &&
+            mouseY >= botonNoRect.top &&
+            mouseY <= botonNoRect.bottom
+        ) {
+            moveBotonNo();
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key.toLowerCase() === 'n') {
+            moveBotonNo();
+        }
+    });
+
+</script>
+
+</body>
+</html> te pido que seas mi novia otra vez por cierto no puedes decir no wiiiii intentalo si quieres
